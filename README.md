@@ -1,13 +1,5 @@
 # LLM Personality Control (성격 벡터 기반 제어 엔진)
 
-## Paper
-
-This repository is based on the following paper:
-
-**Personality Vector: Modulating Personality of Large Language Models by Model Merging**  
-EMNLP 2025 Main Conference  
-[arXiv](https://arxiv.org/abs/2509.19727)
-
 <p align="center">
   <img src="image/figure1_git.png" width="720" alt="Personality Vector Merging Architecture" />
 </p>
@@ -32,13 +24,6 @@ EMNLP 2025 Main Conference
 - model merging 전략 비교
 - transferability 실험 코드 및 관련 자료
 
-## Key contributions
-
-- 프롬프트 의존이 아닌 모델 수준의 성격 제어 방식 제안
-- α scaling을 통한 연속적 trait intensity 조절
-- 다중 trait 병합을 통한 복합 성격 구성
-- role-playing, cross-lingual, cross-modal 설정에서의 확장 가능성 검증
-
 ## Method at a glance
 
 성격 조건별 fine-tuned model과 base model의 파라미터 차이를 personality vector로 정의합니다.
@@ -49,20 +34,26 @@ EMNLP 2025 Main Conference
 
 이를 통해 추가 학습 없이 성격을 제어할 수 있도록 설계했습니다.
 
+## Key contributions
+
+- 프롬프트 의존이 아닌 모델 수준의 성격 제어 방식 제안
+- α scaling을 통한 연속적 trait intensity 조절
+- 다중 trait 병합을 통한 복합 성격 구성
+- role-playing, cross-lingual, cross-modal 설정에서의 확장 가능성 검증
+
 ## Repository structure
+> 스크립트는 실행 예시입니다. 사용 전, 환경에 맞게 모델 경로와 API 설정을 수정하세요.
 
 - `model_merge/`  
-  personality vector 병합 코드와 관련 유틸리티
-  #### Merge models
-  
-  ```bash (아래 스크립트는 실행 예시입니다. 사용 전, 환경에 맞게 모델 경로와 API 설정을 수정하세요.)
+  personality vector 병합 코드와 관련 유틸리티  
+
+  ```bash
   bash model_merge/merge.sh
 
 - `interview/`  
-  병합된 모델의 성격 발현을 확인하기 위한 평가 스크립트
-  #### Evaluate the merged model
-  
-  ```bash (아래 스크립트는 실행 예시입니다. 사용 전, 환경에 맞게 모델 경로와 API 설정을 수정하세요.)
+  병합된 모델의 성격 발현을 확인하기 위한 평가 스크립트  
+
+  ```bash
   bash interview/interview.sh
 
 - `docs/PROJECT.md`  
@@ -71,7 +62,14 @@ EMNLP 2025 Main Conference
 - `image/`  
   README 및 문서에 사용한 구조 이미지
 
-  
+## Paper
+
+This repository is based on the following paper:
+
+**Personality Vector: Modulating Personality of Large Language Models by Model Merging**  
+EMNLP 2025 Main Conference  
+[arXiv](https://arxiv.org/abs/2509.19727)
+
 ## Notes
 
 이 레포는 성격 제어 기술 자체에 초점을 둔 연구 레포입니다.  
