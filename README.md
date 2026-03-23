@@ -1,25 +1,18 @@
 # LLM Personality Control (성격 벡터 기반 제어 엔진)
-### Scalable Personality Control for LLM-based Agents via Personality Vector Merging
 
 ## Paper
 
 This repository is based on the following paper:
 
-**Personality Vector: Modulating Personality of Large Language Models by Model Merging**  
-EMNLP 2025 Main Conference  
-[arXiv](https://arxiv.org/abs/2509.19727)
+**Personality Vector: Modulating Personality of Large Language Models by Model Merging** 
 
+EMNLP 2025 Main Conference 🤩👉[arXiv](https://arxiv.org/abs/2509.19727)
 
-### Personality Vector Project
 <p align="center">
   <img src="image/figure1_git.png" width="500" alt="Personality Vector Merging Architecture" />
 </p>
  
 > Define personality as parameter deltas and enable continuous control via α-scaling and model merging.
-
-# LLM Personality Control (성격 벡터 기반 제어 엔진)
-
-LLM의 성격을 프롬프트가 아니라 모델 파라미터 차이로 정의하고, 벡터 병합을 통해 강도와 조합을 제어하는 연구 레포지토리입니다.
 
 ## Overview
 
