@@ -1,80 +1,85 @@
-# LLM 기반 확장 가능한 AI 성격 제어 시스템
+# LLM Personality Control (성격 벡터 기반 제어 엔진)
 ### Scalable Personality Control for LLM-based Agents via Personality Vector Merging
 
-### Paper
-Personality Vector: Modulating Personality of Large Language Models by Model Merging (Published in EMNLP 2025 Main Conference🥳) [![arXiv](https://img.shields.io/badge/arXiv-2509.19727-b31b1b.svg)](https://arxiv.org/abs/2509.19727)
+## Paper
 
----
+This repository is based on the following paper:
+
+**Personality Vector: Modulating Personality of Large Language Models by Model Merging**  
+EMNLP 2025 Main Conference  
+[arXiv](https://arxiv.org/abs/2509.19727)
+
 
 ### Personality Vector Project
 <p align="center">
   <img src="image/figure1_git.png" width="500" alt="Personality Vector Merging Architecture" />
 </p>
-
-> 프롬프트가 아닌 모델 파라미터 차이(Personality Vector)로 성격을 정의하고, α 스케일링 + 모델 병합으로 성격 강도/조합을 연속적으로 제어합니다.  
+ 
 > Define personality as parameter deltas and enable continuous control via α-scaling and model merging.
 
----
+# LLM Personality Control (성격 벡터 기반 제어 엔진)
 
-## 1. 문제 정의
-Problem
+LLM의 성격을 프롬프트가 아니라 모델 파라미터 차이로 정의하고, 벡터 병합을 통해 강도와 조합을 제어하는 연구 레포지토리입니다.
 
-- 대화형 AI 개인화가 **응답 내용**을 넘어 성격/행동 스타일로 확장됨  
-  Personalization is moving from response-level tuning to personality/behavior style.
-- 프롬프트 기반 성격 설정은 일관성/재현성/확장성이 낮음  
-  Prompt-based persona control has limited consistency, reproducibility, and scalability.
-- 사용자 수준에서 조절 가능하고 확장 가능한 성격 제어 방식이 필요  
-  A user-controllable and scalable personality control mechanism is needed.
+## Overview
 
----
+이 레포는 Personality Vector Merging 기반의 LLM 성격 제어 방법을 다룹니다.  
+각 Big Five 성격 조건으로 fine-tuning된 모델과 base model의 파라미터 차이를 personality vector로 정의하고, 이를 모델에 다시 병합해 성격을 조절합니다.
 
-## 2. 해결 전략
-Approach
+이 프로젝트는 다음 질문에 답하는 기술 검증에 초점을 둡니다.
 
-- 성격을 프롬프트가 아닌 모델 간 파라미터 차이(벡터)로 구조화  
-  Structure personality as parameter deltas (vectors) rather than prompts.
-- α 스케일링으로 성격 강도를 연속적으로 조절  
-  Control intensity continuously using α-scaling.
-- 다중 성격 조합을 모델 병합으로 확장 가능하게 설계  
-  Support multi-trait composition via model merging.
+- 성격 강도를 연속적으로 조절할 수 있는가
+- 여러 성격 trait를 함께 조합할 수 있는가
+- 성격 벡터를 다른 도메인 모델에도 옮길 수 있는가
 
----
+## What this repository covers
 
-## 3. 시스템 구조
-Architecture
-<p align="center">
-  <img src="image/figure2_git.png" width="600" alt="Personality Vector Merging Architecture" />
-</p
+- personality vector 추출
+- 단일 trait scaling
+- 다중 trait composition
+- model merging 전략 비교
+- transferability 실험 코드 및 관련 자료
 
-- Base Model(θ_base) + Personality-tuned Model(θ_p)  
-  Base model plus personality-specialized fine-tuned models.
-- Personality Vector ϕ_p = (θ_p − θ_base)  
-  Personality is represented as parameter deltas.
-- Merged Model θ = θ_base + α · ϕ_p (및 다중 조합)  
-  Merge by adding scaled deltas (and multi-trait composition).
+## Key contributions
 
----
+- 프롬프트 의존이 아닌 모델 수준의 성격 제어 방식 제안
+- α scaling을 통한 연속적 trait intensity 조절
+- 다중 trait 병합을 통한 복합 성격 구성
+- role-playing, cross-lingual, cross-modal 설정에서의 확장 가능성 검증
 
-## 4. 리포 구조
-Structure
+## Method at a glance
 
-- `model_merge/` : 병합 파이프라인 및 merging methods
-- `interview/` : 프롬프트/테스트 스크립트(성격 발현 확인용)  
-- `image/` : 아키텍처 이미지  
-- `docs/` : 기획 문서
+성격 조건별 fine-tuned model과 base model의 파라미터 차이를 personality vector로 정의합니다.
 
----
+- Personality Vector: ϕp = θp − θbase
+- Single-trait control: θ' = θbase + αϕp
+- Multi-trait control: θ' = θbase + Σ αpϕp
 
-## 5. Quickstart
-> 아래 커맨드는 예시이며, 실제 모델 경로/환경에 맞게 수정하세요.  
-> Commands are examples; update paths for your environment.
+이를 통해 추가 학습 없이 성격을 제어할 수 있도록 설계했습니다.
 
-### 5.1 모델 병합
-```bash
-bash model_merge/merge.sh
-```
+## Repository structure
 
-### 5.2 성격 발현 Interview
-```bash
-bash interview/interview.sh
-```
+- `model_merge/`  
+  personality vector 병합 및 실험 코드
+
+- `interview/`  
+  성격 발현 확인용 프롬프트 및 평가 스크립트
+
+- `image/`  
+  논문 및 README에 사용한 구조 이미지
+
+- `docs/`  
+  프로젝트 설명 문서 및 보조 자료
+
+## Recommended entry points
+
+1. `README.md`
+2. `image/figure1_git.png`
+3. `image/figure2_git.png`
+4. `model_merge/`
+5. `interview/`
+
+## Notes
+
+이 레포는 성격 제어 기술 자체에 초점을 둔 연구 레포입니다.  
+사용자 조절 인터페이스와 UX 검증 시스템은 별도 레포인 `LLaPo-chat`에서 다룹니다.
