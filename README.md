@@ -4,9 +4,9 @@
 
 This repository is based on the following paper:
 
-**Personality Vector: Modulating Personality of Large Language Models by Model Merging** 
-
-EMNLP 2025 Main Conference 🤩👉[arXiv](https://arxiv.org/abs/2509.19727)
+**Personality Vector: Modulating Personality of Large Language Models by Model Merging**  
+EMNLP 2025 Main Conference  
+[arXiv](https://arxiv.org/abs/2509.19727)
 
 <p align="center">
   <img src="image/figure1_git.png" width="500" alt="Personality Vector Merging Architecture" />
@@ -63,14 +63,7 @@ EMNLP 2025 Main Conference 🤩👉[arXiv](https://arxiv.org/abs/2509.19727)
 
 - `docs/`  
   프로젝트 설명 문서 및 보조 자료
-
-## Recommended entry points
-
-1. `README.md`
-2. `image/figure1_git.png`
-3. `image/figure2_git.png`
-4. `model_merge/`
-5. `interview/`
+  
 
 ## Notes
 
