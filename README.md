@@ -1,4 +1,4 @@
-# llm-personality-vector-merging (성격 벡터 기반 제어 엔진)
+# LLM Personality Control (성격 벡터 기반 제어 엔진)
 
 ## Paper
 
