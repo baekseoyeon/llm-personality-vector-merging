@@ -1,4 +1,4 @@
-# LLM Personality Control (성격 벡터 기반 제어 엔진)
+# llm-personality-vector-merging (성격 벡터 기반 제어 엔진)
 
 ## Paper
 
@@ -9,15 +9,14 @@ EMNLP 2025 Main Conference
 [arXiv](https://arxiv.org/abs/2509.19727)
 
 <p align="center">
-  <img src="image/figure1_git.png" width="500" alt="Personality Vector Merging Architecture" />
+  <img src="image/figure1_git.png" width="720" alt="Personality Vector Merging Architecture" />
 </p>
- 
-> Define personality as parameter deltas and enable continuous control via α-scaling and model merging.
 
 ## Overview
 
 이 레포는 Personality Vector Merging 기반의 LLM 성격 제어 방법을 다룹니다.  
 각 Big Five 성격 조건으로 fine-tuning된 모델과 base model의 파라미터 차이를 personality vector로 정의하고, 이를 모델에 다시 병합해 성격을 조절합니다.
+즉, 프롬프트가 아니라 **모델 파라미터 차이**로 LLM의 성격을 정의하고, 이를 **α 스케일링**과 **모델 병합**으로 제어합니다.
 
 이 프로젝트는 다음 질문에 답하는 기술 검증에 초점을 둡니다.
 
