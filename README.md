@@ -53,18 +53,26 @@ EMNLP 2025 Main Conference
 ## Repository structure
 
 - `model_merge/`  
-  personality vector 병합 및 실험 코드
+  personality vector 병합 코드와 관련 유틸리티
+  #### Merge models
+  
+  ```bash (아래 스크립트는 실행 예시입니다. 사용 전, 환경에 맞게 모델 경로와 API 설정을 수정하세요.)
+  bash model_merge/merge.sh
 
 - `interview/`  
-  성격 발현 확인용 프롬프트 및 평가 스크립트
+  병합된 모델의 성격 발현을 확인하기 위한 평가 스크립트
+  #### Evaluate the merged model
+  
+  ```bash (아래 스크립트는 실행 예시입니다. 사용 전, 환경에 맞게 모델 경로와 API 설정을 수정하세요.)
+  bash interview/interview.sh
+
+- `docs/PROJECT.md`  
+  프로젝트 개요와 기술 범위 정리
 
 - `image/`  
-  논문 및 README에 사용한 구조 이미지
+  README 및 문서에 사용한 구조 이미지
 
-- `docs/`  
-  프로젝트 설명 문서 및 보조 자료
   
-
 ## Notes
 
 이 레포는 성격 제어 기술 자체에 초점을 둔 연구 레포입니다.  
